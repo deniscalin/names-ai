@@ -30,5 +30,5 @@ jobs:
             rm -rf names-ai
             git clone https://github.com/deniscalin/names-ai.git
             cd names-ai
-            sudo docker build -t namesimage .
-            sudo docker run -d --name namesservice -p 80:80 namesimage
+            sudo docker-compose build
+            sudo docker-compose up -d

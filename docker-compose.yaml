@@ -1,0 +1,7 @@
+version: "3"
+
+services:
+  names-api:
+    build: .
+    ports:
+      - 80:80
