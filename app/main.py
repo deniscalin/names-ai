@@ -10,5 +10,5 @@ async def read_root():
 
 
 @app.get('/names/{number}')
-async def get_names(number: int, seed: Union[str, None] = None):
+async def get_names(number: int, seed: Union[int, None] = None):
     return {"number": number, "seed": seed}
