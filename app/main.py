@@ -6,7 +6,7 @@ app = FastAPI()
 
 @app.get('/')
 async def read_root():
-    return {"Welcome message": "Welcome to Names API"}
+    return {"Welcome message": "Welcome to the Names AI API"}
 
 
 @app.get('/names/{number}')
