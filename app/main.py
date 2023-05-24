@@ -1,5 +1,7 @@
 from typing import Union
 from fastapi import FastAPI
+from inference import load_params, generate_names
+
 
 app = FastAPI()
 
@@ -11,4 +13,6 @@ async def read_root():
 
 @app.get('/names/{number}')
 async def get_names(number: int, seed: Union[int, None] = None):
-    return {"number": number, "seed": seed}
+    params, itos = await load_params()
+    names = generate_names(params, itos, number, seed)
+    return {'names': names}
