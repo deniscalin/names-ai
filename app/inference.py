@@ -5,12 +5,12 @@ import torch.nn.functional as F
 async def load_params():
     """Loads pre-trained parameters of the MLP neural network and a lookup dict.
     Returns two dictionaries `params`, `itos`"""
-    params = torch.load('params.pt')
-    itos = torch.load('lookups.pt')
+    params = torch.load('app/params.pt')
+    itos = torch.load('app/lookups.pt')
     return params, itos
 
 
-def generate_names(params, itos, number=15, seed=2147483647):
+def generate_names(params, itos, number, seed=None):
     """Generates names by doing a forward pass through the network to predict each next character.
     The context size is 3.
 
@@ -24,7 +24,10 @@ def generate_names(params, itos, number=15, seed=2147483647):
     names = []
     block_size = 3
 
-    g = torch.Generator().manual_seed(seed)
+    if seed:
+        g = torch.Generator().manual_seed(seed)
+    else:
+        g = torch.Generator().manual_seed(2147483647)
 
     for _ in range(number):
         out = []

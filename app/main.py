@@ -1,6 +1,6 @@
 from typing import Union
 from fastapi import FastAPI
-from inference import load_params, generate_names
+from app.inference import load_params, generate_names
 
 
 app = FastAPI()
