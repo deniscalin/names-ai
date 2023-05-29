@@ -10,7 +10,7 @@ async def load_params():
     return params, itos
 
 
-def generate_names(params, itos, number, seed=None):
+def generate_names(params, itos, number, seed):
     """Generates names by doing a forward pass through the network to predict each next character.
     The context size is 3.
 
@@ -24,10 +24,7 @@ def generate_names(params, itos, number, seed=None):
     names = []
     block_size = 3
 
-    if seed:
-        g = torch.Generator().manual_seed(seed)
-    else:
-        g = torch.Generator().manual_seed(2147483647)
+    g = torch.Generator().manual_seed(seed)
 
     for _ in range(number):
         out = []
