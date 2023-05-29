@@ -28,7 +28,7 @@ jobs:
           key: ${{secrets.KEY}}
           script: |
             sudo docker kill names-ai_names-api_1
-            sudo docker system prune --all
+            sudo docker system prune --all --volumes --force
             rm -rf names-ai
             git clone https://github.com/deniscalin/names-ai.git
             cd names-ai
