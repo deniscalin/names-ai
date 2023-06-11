@@ -12,7 +12,7 @@ async def read_root():
 
 
 @app.get('/names/{number}')
-async def get_names(number: int, seed: Union[int, None] = 2147483647):
-    params, itos = await load_params()
-    names = generate_names(params, itos, number, seed)
+async def get_names(number: int, seed: Union[int, None] = 1):
+    C, layers, itos = await load_params()
+    names = generate_names(C, layers, itos, number, seed)
     return {'names': names}
